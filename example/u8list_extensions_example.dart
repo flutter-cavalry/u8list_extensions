@@ -27,5 +27,5 @@ void main() {
 
   // Example of toHexPreview
   final hexPreview = data.toHexPreview(maxLength: 10);
-  print(hexPreview); // Output: "01 02 03 04 05 ... 10 11 12 13 14"
+  print(hexPreview); // Output: "Bytes(20)[01 02 03 04 05 ... 10 11 12 13 14]"
 }

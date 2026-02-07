@@ -40,7 +40,7 @@ void main() {
   test('toHexPreview', () {
     expect(
       _data.toHexPreview(maxLength: 10),
-      '01 02 03 04 05 ... 10 11 12 13 14',
+      'Bytes(20)[01 02 03 04 05 ... 10 11 12 13 14]',
     );
   });
 }
