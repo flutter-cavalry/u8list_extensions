@@ -1,0 +1,15 @@
+name: u8list_extensions
+description: Extensions for Uint8List.
+version: 1.0.0
+homepage: https://github.com/flutter-cavalry/u8list_extensions
+
+environment:
+  sdk: ^3.10.8
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.9.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6
