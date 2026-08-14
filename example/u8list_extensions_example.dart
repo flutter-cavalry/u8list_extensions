@@ -9,7 +9,7 @@ void main() {
   final sublist1 = data.subView(1, end: 5);
   print(sublist1); // Output: [2, 3, 4, 5]
 
-  // Example of subViewWithLength
+  // Example of subView with length
   final sublist2 = data.subView(15, length: 3);
   print(sublist2); // Output: [16, 17, 18]
 
