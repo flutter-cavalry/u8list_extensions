@@ -23,7 +23,9 @@ extension Uint8ListExt on Uint8List {
     if (length != null) {
       end = start + length;
     }
-    if (start < 0 || (end != null && end > this.length)) {
+    if (start < 0 ||
+        start > this.length ||
+        (end != null && end > this.length)) {
       return null;
     }
     return Uint8List.sublistView(this, start, end);
@@ -64,7 +66,9 @@ extension Uint8ListExt on Uint8List {
     if (length != null) {
       end = start + length;
     }
-    if (start < 0 || (end != null && end > this.length)) {
+    if (start < 0 ||
+        start > this.length ||
+        (end != null && end > this.length)) {
       return null;
     }
     return ByteData.sublistView(this, start, end);

@@ -27,6 +27,7 @@ void main() {
 
   test('subViewOrNull returns null for invalid bounds', () {
     expect(_data.subViewOrNull(-1), isNull);
+    expect(_data.subViewOrNull(21), isNull);
     expect(_data.subViewOrNull(15, length: 6), isNull);
     expect(_data.subViewOrNull(0, end: 21), isNull);
   });
@@ -81,6 +82,7 @@ void main() {
 
   test('asByteDataOrNull returns null for invalid bounds', () {
     expect(_data.asByteDataOrNull(start: -1), isNull);
+    expect(_data.asByteDataOrNull(start: 21), isNull);
     expect(_data.asByteDataOrNull(start: 15, length: 6), isNull);
     expect(_data.asByteDataOrNull(start: 0, end: 21), isNull);
   });
