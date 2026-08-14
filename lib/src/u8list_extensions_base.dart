@@ -1,18 +1,16 @@
 import 'dart:typed_data';
 
 extension Uint8ListExt on Uint8List {
-  /// Creates a sublist view of this [Uint8List] from [start] to [end].
-  Uint8List subView(int start, [int? end]) {
-    return Uint8List.sublistView(this, start, end);
-  }
+  /// Creates a sublist view of this [Uint8List] from [start] to [end] or with the specified [length].
+  Uint8List subView(int start, {int? end, int? length}) {
+    if (end != null && length != null) {
+      throw ArgumentError('Cannot specify both end and length.');
+    }
 
-  /// Creates a sublist view of this [Uint8List] from [start] with the specified [length].
-  Uint8List subViewWithLength(int start, [int? length]) {
-    return Uint8List.sublistView(
-      this,
-      start,
-      length != null ? start + length : null,
-    );
+    if (length != null) {
+      end = start + length;
+    }
+    return Uint8List.sublistView(this, start, end);
   }
 
   /// Converts the [Uint8List] to a hexadecimal string representation.
@@ -52,7 +50,7 @@ extension Uint8ListExt on Uint8List {
       content = toHexString(separator: ' ');
     } else {
       content =
-          '${subView(0, maxLength ~/ 2).toHexString(separator: ' ')} ... ${subView(length - maxLength ~/ 2).toHexString(separator: ' ')}';
+          '${subView(0, end: maxLength ~/ 2).toHexString(separator: ' ')} ... ${subView(length - maxLength ~/ 2).toHexString(separator: ' ')}';
     }
     return '$head[$content]';
   }

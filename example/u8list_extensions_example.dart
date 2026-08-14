@@ -6,11 +6,11 @@ void main() {
   final data = Uint8List.fromList(List.generate(20, (index) => index + 1));
 
   // Example of subView
-  final sublist1 = data.subView(1, 5);
+  final sublist1 = data.subView(1, end: 5);
   print(sublist1); // Output: [2, 3, 4, 5]
 
   // Example of subViewWithLength
-  final sublist2 = data.subViewWithLength(15, 3);
+  final sublist2 = data.subView(15, length: 3);
   print(sublist2); // Output: [16, 17, 18]
 
   // Example of toHexString
