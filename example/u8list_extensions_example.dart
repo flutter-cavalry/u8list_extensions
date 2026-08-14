@@ -18,7 +18,7 @@ void main() {
   print(hexString); // Output: "0b 0c 0d 0e 0f 10 11 12 13 14"
 
   // Example of asByteData
-  final byteData = data.asByteData(5, 6);
+  final byteData = data.asByteData(start: 5, end: 6);
   print(byteData.getUint8(0)); // Output: 6
 
   // Example of asByteDataWithLength

@@ -13,6 +13,22 @@ extension Uint8ListExt on Uint8List {
     return Uint8List.sublistView(this, start, end);
   }
 
+  /// Creates a sublist view of this [Uint8List] from [start] to [end] or with the specified [length].
+  /// Returns null if the specified range is out of bounds.
+  Uint8List? subViewOrNull(int start, {int? end, int? length}) {
+    if (end != null && length != null) {
+      throw ArgumentError('Cannot specify both end and length.');
+    }
+
+    if (length != null) {
+      end = start + length;
+    }
+    if (start < 0 || (end != null && end > this.length)) {
+      return null;
+    }
+    return Uint8List.sublistView(this, start, end);
+  }
+
   /// Converts the [Uint8List] to a hexadecimal string representation.
   String toHexString({String separator = ''}) {
     final StringBuffer buffer = StringBuffer();
@@ -26,8 +42,31 @@ extension Uint8ListExt on Uint8List {
     return buffer.toString();
   }
 
-  /// Creates a [ByteData] view of this [Uint8List] from [start] to [end].
-  ByteData asByteData([int start = 0, int? end]) {
+  /// Creates a [ByteData] view of this [Uint8List] from [start] to [end] or with the specified [length].
+  ByteData asByteData({int start = 0, int? end, int? length}) {
+    if (end != null && length != null) {
+      throw ArgumentError('Cannot specify both end and length.');
+    }
+
+    if (length != null) {
+      end = start + length;
+    }
+    return ByteData.sublistView(this, start, end);
+  }
+
+  /// Creates a [ByteData] view of this [Uint8List] from [start] to [end] or with the specified [length].
+  /// Returns null if the specified range is out of bounds.
+  ByteData? asByteDataOrNull({int start = 0, int? end, int? length}) {
+    if (end != null && length != null) {
+      throw ArgumentError('Cannot specify both end and length.');
+    }
+
+    if (length != null) {
+      end = start + length;
+    }
+    if (start < 0 || (end != null && end > this.length)) {
+      return null;
+    }
     return ByteData.sublistView(this, start, end);
   }
 

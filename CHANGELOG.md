@@ -1,3 +1,7 @@
+## 2.1.0
+
+- Add `subViewOrNull`.
+
 ## 2.0.0
 
 - Breaking change: `subViewWithLength` is removed, use `subView` with `length` parameter instead.
