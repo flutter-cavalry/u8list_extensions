@@ -108,5 +108,14 @@ void main() {
       _data.toHexPreview(maxLength: 10, noHead: true),
       '01 02 03 04 05 ... 10 11 12 13 14',
     );
+    expect(_data.toHexPreviewCore(maxLength: 10), (
+      'Bytes(20)[01 02 03 04 05 ... 10 11 12 13 14]',
+      true,
+    ));
+    expect(_data.subView(0, end: 2).toHexPreviewCore(), (
+      'Bytes(2)[01 02]',
+      false,
+    ));
+    expect(Uint8List(0).toHexPreviewCore(), ('Bytes(0)', false));
   });
 }

@@ -84,20 +84,35 @@ extension Uint8ListExt on Uint8List {
   }
 
   String toHexPreview({int maxLength = 20, noHead = false, separator = ' '}) {
+    return toHexPreviewCore(
+      maxLength: maxLength,
+      noHead: noHead,
+      separator: separator,
+    ).$1;
+  }
+
+  (String, bool) toHexPreviewCore({
+    int maxLength = 20,
+    noHead = false,
+    separator = ' ',
+  }) {
     var head = noHead ? '' : 'Bytes($length)';
     if (length == 0) {
-      return head;
+      return (head, false);
     }
     final String content;
+    final bool truncated;
     if (length <= maxLength) {
       content = toHexString(separator: separator);
+      truncated = false;
     } else {
       content =
           '${subView(0, end: maxLength ~/ 2).toHexString(separator: separator)} ... ${subView(length - maxLength ~/ 2).toHexString(separator: separator)}';
+      truncated = true;
     }
     if (noHead) {
-      return content;
+      return (content, truncated);
     }
-    return '$head[$content]';
+    return ('$head[$content]', truncated);
   }
 }
