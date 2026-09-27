@@ -1,6 +1,46 @@
 import 'dart:typed_data';
 
 extension Uint8ListExt on Uint8List {
+  /// Returns whether this list starts with [prefix].
+  bool startsWith(List<int> prefix) {
+    if (prefix.length > length) {
+      return false;
+    }
+    for (var i = 0; i < prefix.length; i++) {
+      if (this[i] != prefix[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /// Returns whether this list ends with [suffix].
+  bool endsWith(List<int> suffix) {
+    if (suffix.length > length) {
+      return false;
+    }
+    final offset = length - suffix.length;
+    for (var i = 0; i < suffix.length; i++) {
+      if (this[offset + i] != suffix[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /// Returns whether this list contains the same bytes as [other].
+  bool equalsTo(Uint8List other) {
+    if (length != other.length) {
+      return false;
+    }
+    for (var i = 0; i < length; i++) {
+      if (this[i] != other[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   /// Creates a sublist view of this [Uint8List] from [start] to [end] or with the specified [length].
   Uint8List subView(int start, {int? end, int? length}) {
     if (end != null && length != null) {

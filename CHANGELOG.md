@@ -1,3 +1,7 @@
+## 2.3.0
+
+- Add `startsWith`, `endsWith`, and `equalsTo` methods.
+
 ## 2.2.0
 
 - Add `toHexPreviewCore`.

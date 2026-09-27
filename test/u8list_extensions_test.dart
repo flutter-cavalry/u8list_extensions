@@ -6,6 +6,32 @@ import 'package:u8list_extensions/u8list_extensions.dart';
 final _data = Uint8List.fromList(List.generate(20, (index) => index + 1));
 
 void main() {
+  test('startsWith', () {
+    expect(_data.startsWith([1, 2, 3]), isTrue);
+    expect(_data.startsWith([1, 2, 4]), isFalse);
+    expect(_data.startsWith(List<int>.empty()), isTrue);
+    expect(_data.startsWith(List.generate(21, (index) => index + 1)), isFalse);
+  });
+
+  test('endsWith', () {
+    expect(_data.endsWith([18, 19, 20]), isTrue);
+    expect(_data.endsWith([18, 19, 21]), isFalse);
+    expect(_data.endsWith(List<int>.empty()), isTrue);
+    expect(_data.endsWith(List.generate(21, (index) => index + 1)), isFalse);
+  });
+
+  test('equalsTo', () {
+    expect(
+      _data.equalsTo(Uint8List.fromList(List.generate(20, (i) => i + 1))),
+      isTrue,
+    );
+    expect(_data.equalsTo(Uint8List.fromList([1, 2, 3])), isFalse);
+    expect(
+      _data.equalsTo(Uint8List.fromList(List.generate(20, (i) => i))),
+      isFalse,
+    );
+  });
+
   test('subView', () {
     expect(_data.subView(1, end: 5), Uint8List.fromList([2, 3, 4, 5]));
     expect(_data.subView(15), Uint8List.fromList([16, 17, 18, 19, 20]));

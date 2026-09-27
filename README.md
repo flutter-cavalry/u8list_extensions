@@ -9,6 +9,11 @@ Extensions for Uint8List.
 ```dart
 final data = Uint8List.fromList(List.generate(20, (index) => index + 1));
 
+// startsWith, endsWith, and equalsTo
+print(data.startsWith([1, 2, 3])); // Output: true
+print(data.endsWith([18, 19, 20])); // Output: true
+print(data.equalsTo(Uint8List.fromList(List.generate(20, (i) => i + 1)))); // Output: true
+
 // subView
 final sublist1 = data.subView(1, end: 5);
 print(sublist1); // Output: [2, 3, 4, 5]
