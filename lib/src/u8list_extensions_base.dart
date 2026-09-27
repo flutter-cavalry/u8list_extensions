@@ -83,17 +83,17 @@ extension Uint8ListExt on Uint8List {
     );
   }
 
-  String toHexPreview({int maxLength = 20}) {
-    var head = 'Bytes($length)';
+  String toHexPreview({int maxLength = 20, noHead = false, separator = ' '}) {
+    var head = noHead ? '' : 'Bytes($length)';
     if (length == 0) {
       return head;
     }
     final String content;
     if (length <= maxLength) {
-      content = toHexString(separator: ' ');
+      content = toHexString(separator: separator);
     } else {
       content =
-          '${subView(0, end: maxLength ~/ 2).toHexString(separator: ' ')} ... ${subView(length - maxLength ~/ 2).toHexString(separator: ' ')}';
+          '${subView(0, end: maxLength ~/ 2).toHexString(separator: separator)} ... ${subView(length - maxLength ~/ 2).toHexString(separator: separator)}';
     }
     return '$head[$content]';
   }
