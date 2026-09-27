@@ -95,6 +95,9 @@ extension Uint8ListExt on Uint8List {
       content =
           '${subView(0, end: maxLength ~/ 2).toHexString(separator: separator)} ... ${subView(length - maxLength ~/ 2).toHexString(separator: separator)}';
     }
+    if (noHead) {
+      return content;
+    }
     return '$head[$content]';
   }
 }

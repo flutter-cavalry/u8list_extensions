@@ -104,5 +104,9 @@ void main() {
       _data.toHexPreview(maxLength: 10),
       'Bytes(20)[01 02 03 04 05 ... 10 11 12 13 14]',
     );
+    expect(
+      _data.toHexPreview(maxLength: 10, noHead: true),
+      '01 02 03 04 05 ... 10 11 12 13 14',
+    );
   });
 }
