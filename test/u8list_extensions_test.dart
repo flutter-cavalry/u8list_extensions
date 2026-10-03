@@ -56,6 +56,9 @@ void main() {
     expect(_data.subViewOrNull(21), isNull);
     expect(_data.subViewOrNull(15, length: 6), isNull);
     expect(_data.subViewOrNull(0, end: 21), isNull);
+    expect(_data.subViewOrNull(0, end: -1), isNull);
+    expect(_data.subViewOrNull(5, end: 4), isNull);
+    expect(_data.subViewOrNull(1, length: -1), isNull);
   });
 
   test('subViewOrNull rejects end and length together', () {
@@ -111,6 +114,9 @@ void main() {
     expect(_data.asByteDataOrNull(start: 21), isNull);
     expect(_data.asByteDataOrNull(start: 15, length: 6), isNull);
     expect(_data.asByteDataOrNull(start: 0, end: 21), isNull);
+    expect(_data.asByteDataOrNull(start: 0, end: -1), isNull);
+    expect(_data.asByteDataOrNull(start: 5, end: 4), isNull);
+    expect(_data.asByteDataOrNull(start: 1, length: -1), isNull);
   });
 
   test('asByteDataOrNull rejects end and length together', () {
