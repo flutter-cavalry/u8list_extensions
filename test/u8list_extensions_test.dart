@@ -9,7 +9,13 @@ void main() {
   test('startsWith', () {
     expect(_data.startsWith([1, 2, 3]), isTrue);
     expect(_data.startsWith([1, 2, 4]), isFalse);
+    expect(_data.startsWith([4, 5, 6], offset: 3), isTrue);
+    expect(_data.startsWith([3, 5, 6], offset: 2), isFalse);
+    expect(_data.startsWith([1], offset: -1), isFalse);
+    expect(_data.startsWith([1], offset: 21), isFalse);
+    expect(_data.startsWith([20, 21], offset: 19), isFalse);
     expect(_data.startsWith(List<int>.empty()), isTrue);
+    expect(_data.startsWith(List<int>.empty(), offset: 20), isTrue);
     expect(_data.startsWith(List.generate(21, (index) => index + 1)), isFalse);
   });
 

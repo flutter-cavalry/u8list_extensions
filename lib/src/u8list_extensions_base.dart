@@ -2,12 +2,12 @@ import 'dart:typed_data';
 
 extension Uint8ListExt on Uint8List {
   /// Returns whether this list starts with [prefix].
-  bool startsWith(List<int> prefix) {
-    if (prefix.length > length) {
+  bool startsWith(List<int> prefix, {int offset = 0}) {
+    if (offset < 0 || offset > length || prefix.length > length - offset) {
       return false;
     }
     for (var i = 0; i < prefix.length; i++) {
-      if (this[i] != prefix[i]) {
+      if (this[offset + i] != prefix[i]) {
         return false;
       }
     }

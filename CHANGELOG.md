@@ -1,3 +1,7 @@
+## 2.4.0
+
+- Add an optional `offset` param to `startsWith`.
+
 ## 2.3.0
 
 - Add `startsWith`, `endsWith`, and `equalsTo` methods.
